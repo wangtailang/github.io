@@ -2,9 +2,13 @@
 version: 1.5.0
 
 # Site settings 配置站点
-title: 'Mr Li'
-description: '个人的一个技术博客站点，主要用于记录个人在学习过程中遇到的技术问题及解决方法、技术实验，以及一些比较有趣的事情。'
-keyword: 'zhonger，zhonger的博客，nodejs，kvm, 机器学习'
+# 博客名称
+title: 'Mr Wang'
+# 博客描述，会出现在每个 HTML 页面的 head 部分
+description: '个人的一个技术博客站点，主要用于记录个人在学习过程中遇到的技术问题及解决方法，以及一些比较有趣的事情。'
+# 博客整体的关键词，可以是多个，使用逗号分隔开，也会出现在 head 部分
+keyword: 'java, boot, cloud, 成长日记'
+# 博客的顶级 URL，一般设置为主域名
 url: 'https://h2o-ac.pages.dev' # your host
 
 # when build blog on server, if you don't need baseurl, you should leave this value blank.
@@ -15,6 +19,8 @@ url: 'https://h2o-ac.pages.dev' # your host
 # 例如，当你的域名是 "kaeyleo.github.io"  时，这个 url 需要留空
 # but if your created a repo named "myblog", and the site is "kaeyleo.github.io/myblog", change baseurl to '/myblog'
 # 但是，如果你创建了一个叫 "myblog" 的网站，此时网址会变成 "kaeyleo.github.io/myblog" ，这时再将 baseurl 设置为 '/myblog'
+# if you don't need baseurl, you should leave this value blank.
+# 一般来说为空，如果是在子目录部署，需要修改为子目录名称
 baseurl: ''
 
 # Internalization 国际化
@@ -33,13 +39,14 @@ pwa:
   short_name: 'lisz'
 
 # Navigation links
+# 导航栏，一般是顶级的页面链接
 nav:
   home: '/'
-  blog: '/blog/index.html'
+  blog: '/blog/'
   archives: '/archives.html'
   tags: '/tags.html'
-  about:   
-    RSS: '/feed.xml'
+  RSS: '/feed.xml'
+  logs: '/logs.html'
 
 # Gray for the whole site 全站灰色
 gray: false
@@ -56,17 +63,62 @@ favicon: "/favicon.ico"
 footer:
   since: 2015
 
+# timezone 时区
+timezone: Asia/Shanghai
+
 # Author 配置博主信息
-author: 'zhonger'
-nickname: 'zhonger'
+author: 'wangtailang'
+nickname: 'wangtailang'
 bio: '全栈开发者，热爱前端、运维和架构设计'
 avatar: '/assets/img/profile.webp'
 
 # Search
 search: true
 
-# Night mode
+# Night mode 是否开启黑夜模式
 nightMode: false
+  
+  Comments 评论区设置，支持 Disqus
+disqus: true
+disqus_url: 'https://zhonger.disqus.com/embed.js'
+
+# Share 是否开启文章分享功能以及何种分享方式
+social-share: true
+social-share-items: ['wechat', 'weibo', 'douban', 'twitter']
+
+# theme color 主题皮肤
+theme-color: 'default'  # pink or default
+
+# Post header background patterns (when the post no cover): circuitBoard, overlappingCircles, food, glamorous, ticTacToe, seaOfClouds
+# 当未设置文章封面时文章的默认顶部背景模式
+postPatterns: 'food'
+
+
+
+# Tags 设置标签
+recommend-tags: true # whether or not display recommend-tags on the sidebar
+recommend-condition-size: 12 # a tag will be recommended if the size of it is more than this value
+
+# Build settings
+# 文章列表展示页每页显示的文章数量、路径以及跳过文件列表
+paginate: 10
+paginate_path: 'blog/page:num'
+exclude: ['node_modules', 'dev', 'package.json', 'gulpfile.js', '.gitignore', 'README.md']
+
+# Markdown 翻译器和语法着色工具
+markdown: kramdown
+highlighter: prism
+kramdown:
+  input: GFM
+
+# 是否开启 RSS 订阅
+RSS: true
+
+# Plugins 编译时所需的 Jekyll 插件
+plugins: [jekyll-paginate, jekyll-feed, jemoji, jekyll-sitemap]
+
+# Netlify 设置选项，指定遵循的强制跳转规则
+include: [_redirects]
 
 # Comments 评论功能
 comments:
@@ -96,16 +148,6 @@ comments:
 
 # MathJax 公式支持 by Ray-Eldath
 mathjax: true
-
-# Share
-social-share: true
-social-share-items: ['wechat', 'weibo', 'douban', 'twitter']
-
-# theme color 主题皮肤
-theme-color: 'default'  # pink or default
-
-# Post header background patterns (when the post no cover): circuitBoard, overlappingCircles, food, glamorous, ticTacToe, seaOfClouds
-postPatterns: 'circuitBoard'
 
 # SNS settings 配置社交网站
 # url: email, weibo, zhihu, twitter, instagram, juejin, github, douban, facebook, dribble, uicn, jianshu, medium, linkedin
@@ -199,9 +241,7 @@ google_search:
 # ToS
 tos: /tos.html
 
-# Tags 设置标签
-recommend-tags: true # whether or not display recommend-tags on the sidebar
-recommend-condition-size: 12 # a tag will be recommended if the size of it is more than this value
+
 
 # Build settings
 pagination:
@@ -213,13 +253,7 @@ pagination:
   sort_field: 'date'
   sort_reverse: true
 
-exclude: ['node_modules', 'dev', 'package.json', 'webpack.config.js', '.gitignore', 'README.md', '*.gemspec', '*.gem']
 
-# Markdown
-markdown: kramdown
-highlighter: rouge
-kramdown:
-  input: GFM
 
 # Prism settings
 # Support all offical and extended themes
@@ -227,9 +261,6 @@ kramdown:
 prism:
   theme: one-light
   line_numbers: true
-
-# RSS
-RSS: true
 
 # Permalink
 # See: https://github.com/kaeyleo/jekyll-theme-H2O/issues/35
@@ -283,6 +314,3 @@ premonition:
       default_title: 'Warning'
     error:
       default_title: 'Error'
-
-# Plugins
-plugins: [jekyll-paginate-v2, jekyll-feed, jekyll-sitemap, premonition, h2o-ac-jekyll-extlinks]
